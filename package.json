@@ -1,0 +1,36 @@
+{
+  "name": "react-app",
+  "version": "1.0.0",
+  "description": "server render",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:**",
+    "dev:start": "nodemon --watch dist --exec node \"./dist/bundle.js\"",
+    "dev:build": "webpack --config webpack.server.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HerryLo/react-app.git"
+  },
+  "author": "HerryLo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HerryLo/react-app/issues"
+  },
+  "homepage": "https://github.com/HerryLo/react-app#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "webpack": "^4.20.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
