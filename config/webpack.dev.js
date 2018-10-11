@@ -11,7 +11,7 @@ const server = {
     entry: './server/index.js',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, './dist/server')
+        path: path.resolve(__dirname, '../dist/server')
     },
     externals: [nodeExternals()],
 };
@@ -22,7 +22,7 @@ const client = {
     mode: 'development',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, './dist/client')
+        path: path.resolve(__dirname, '../dist/client')
     }
 };
 
