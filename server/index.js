@@ -1,23 +1,22 @@
 import React from 'react';
 import express from 'express';
-import Home from '../app/index.js';
+import App from '../client/app.js';
 import ReactDOMServer from 'react-dom/server'
+import path from 'path';
 
 const server = express();
 const port = 3000;
 
-const html = `<html>
-    <head>
-        <title>react</title>
-    </head>
-    <body>
-        <h1>server react</h1>
-        <p>${ReactDOMServer.renderToString(<Home />)}</p>
-    </body>
-</html>`
+const content = ReactDOMServer.renderToString(<App />);
+
+server.set('views', 'server');
+server.set('view engine', 'ejs');
+server.use(express.static('dist'))
 
 server.get('/', (req ,res) => {
-    res.send(html);
+    res.render('index' ,{
+        content: content
+    });
 })
 
 server.listen(port, () => {

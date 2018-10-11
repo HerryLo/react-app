@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home = () => {
     return (
-        <div>LiuHeng123434</div>
+        <div>React ServerRender</div>
     )
 }
 

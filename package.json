@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "npm-run-all --parallel dev:**",
-    "dev:start": "nodemon --watch dist --exec node \"./dist/bundle.js\"",
-    "dev:build": "webpack --config webpack.server.js --watch"
+    "dev:start": "nodemon --watch dist --exec node \"./dist/server/bundle.js\"",
+    "dev:build": "webpack --config webpack.dev.js -p --watch"
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,9 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "ejs": "^2.6.1",
     "webpack-cli": "^3.1.2",
+    "webpack-merge": "^4.1.4",
     "webpack-node-externals": "^1.7.2"
   }
 }

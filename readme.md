@@ -1,4 +1,4 @@
-## 参考
+## react同构
 
 - node 服务渲染
 - nodemon 监听文件服务
@@ -6,7 +6,7 @@
 - npm-run-all 保证命令的一致性
 
 ```
-$ npm install 
+$ npm install
 
 $ npm run dev
 ```
