@@ -3,22 +3,19 @@ import ReactDOMServer from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import Router from '../client/router'
 
-export function reactRender(req) {
-    const context = {};
-    const content = ReactDOMServer.renderToString(
-        (<StaticRouter location={req.path} context={context}>
+export function reactRender(req, res) {
+    try{
+        const context = {};
+        const element = 
+        <StaticRouter location={req.path} context={context}>
             {Router}
-        </StaticRouter>)
-    );
-    return `<html>
-            <head>
-                <title></title>
-            </head>
-            <body>
-                <div id="app">${content}</div>
-            </body>
-            <script src="/client/bundle.js"></script>
-            </html>`
+        </StaticRouter>;
+        const content = ReactDOMServer.renderToString(element);
+        res.render('index', { content });
+    }catch(e){
+        console.log(e);
+        res.status(404);
+    }
 }
 
 

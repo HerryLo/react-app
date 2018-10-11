@@ -4,11 +4,12 @@ import { reactRender } from './reactRender'
 const server = express();
 const port = 3000;
 
-
+server.set('views', 'server');
+server.set('view engine', 'ejs');
 server.use(express.static('dist'));
 
 server.get('/', (req ,res) => {
-    res.send(reactRender(req));
+    reactRender(req, res);
 })
 
 server.listen(port, () => {
