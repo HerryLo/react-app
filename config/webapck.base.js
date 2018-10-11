@@ -1,6 +1,5 @@
 module.exports = {
     server: {
-        mode: 'development',
         module: {
             rules: [
                 {
@@ -20,7 +19,6 @@ module.exports = {
         }
     },
     client: {
-        mode: 'development',
         module: {
             rules: [
                 {

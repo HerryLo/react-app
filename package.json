@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm-run-all --parallel dev:**",
     "dev:start": "nodemon --watch dist --exec node \"./dist/server/bundle.js\"",
-    "dev:build": "webpack --config webpack.dev.js -p --watch"
+    "dev:build": "webpack --config ./config/webpack.dev.js -p --watch"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "express": "^4.16.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-router-dom": "^4.3.1",
     "webpack": "^4.20.2"
   },
   "devDependencies": {
