@@ -8,7 +8,7 @@ server.set('views', 'server');
 server.set('view engine', 'ejs');
 server.use(express.static('dist'));
 
-server.get('/', (req ,res) => {
+server.get('*', (req ,res) => {
     reactRender(req, res);
 })
 
