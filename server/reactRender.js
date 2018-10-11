@@ -6,8 +6,7 @@ import Router from '../client/router'
 export function reactRender(req, res) {
     try{
         const context = {};
-        const element = 
-        <StaticRouter location={req.path} context={context}>
+        const element = <StaticRouter location={req.path} context={context}>
             {Router}
         </StaticRouter>;
         const content = ReactDOMServer.renderToString(element);
