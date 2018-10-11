@@ -6,6 +6,7 @@
 - [nodemon](https://www.npmjs.com/package/nodemon) wacth file server
 - [npm-run-all](https://www.npmjs.com/package/npm-run-all) CLI tool to run multiple npm-scripts in parallel or sequential
 - [react@16、react-dom@16](https://reactjs.org/docs/getting-started.html)、[react-router-dom@4](https://reacttraining.com/react-router/web/guides/server-rendering)
+- [ejs](https://www.npmjs.com/package/ejs) html template
 
 
 ```
