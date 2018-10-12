@@ -9,6 +9,27 @@
 - [ejs](https://www.npmjs.com/package/ejs) html template
 
 
+## Project structure
+```
+.
+|——server 服务端
+|  |—— index.ejs                  ejs template
+|  |—— index.js                   server
+|  |—— reactRender.js             react server render
+|——client 客户端
+|  |—— component                  public component
+|  |—— pages                      page
+|  |—— router                     router config
+|  |—— styles                     styles
+|  |—— app.js                     
+|  |—— index.js                   client react
+|  |—— router.js                  main router
+|——config 配置
+|  |—— webapck.base.js            base webpack
+|  |—— webapck.dev.js             dev webpack
+```
+
+
 ```
 $ git clone https://github.com/HerryLo/react-app.git
 
