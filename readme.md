@@ -28,9 +28,59 @@
 |——config 配置
 |  |—— webapck.base.js            base webpack
 |  |—— webapck.dev.js             dev webpack
+``` 
+
+## server render 
+
+node静态服务
+/server/index.js
+```
+import express from 'express';
+import { reactRender } from './reactRender'
+
+const server = express();
+const port = 3000;
+
+server.set('views', 'server');
+server.set('view engine', 'ejs');
+server.use(express.static('dist'));
+
+server.get('*', (req ,res) => {
+    reactRender(req, res);
+})
+
+server.listen(port, () => {
+    console.log(`Node Server Start SUCCESS!`);
+    console.log(`http url: ` ,`http://localhost:${port}`)
+})
 ```
 
+react服务端渲染文件
+/server/reactRender.js
+```
+import React from 'react';
+import ReactDOMServer from 'react-dom/server'
+import { StaticRouter } from 'react-router-dom'
+import Router from '../client/router'
 
+export function reactRender(req, res) {
+    try{
+        const context = {};
+        const element = <StaticRouter location={req.path} context={context}>
+            {Router}
+        </StaticRouter>;
+        const content = ReactDOMServer.renderToString(element);
+        res.render('index', { content });
+    }catch(e){
+        console.log(e);
+        res.status(404);
+    }
+}
+```
+
+对于服务端渲染，希望可以慎重考虑，它会加大服务器的运行压力，相反客户端渲染在CDN加速的前提下，也会有不错的效果。
+
+## Start
 ```
 $ git clone https://github.com/HerryLo/react-app.git
 
