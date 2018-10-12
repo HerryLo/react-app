@@ -1,6 +1,6 @@
-## react isomorphism
+# react isomorphism
 
-### depend npm package
+## Depend
 - [express](http://expressjs.com/) static server
 - [webpack](https://webpack.js.org/) Bundle with webpack
 - [nodemon](https://www.npmjs.com/package/nodemon) wacth file server
