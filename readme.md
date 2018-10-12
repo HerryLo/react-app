@@ -32,9 +32,12 @@
 
 ## server render 
 
+下面将node服务端代码展示出来，希望可以帮到大家！
+
 node静态服务
+
 /server/index.js
-```
+```javascript
 import express from 'express';
 import { reactRender } from './reactRender'
 
@@ -56,8 +59,9 @@ server.listen(port, () => {
 ```
 
 react服务端渲染文件
+
 /server/reactRender.js
-```
+```javascript
 import React from 'react';
 import ReactDOMServer from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
