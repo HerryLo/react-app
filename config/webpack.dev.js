@@ -8,6 +8,7 @@ const webpackBase = require('./webapck.base.js');
 const server = {
     target: 'node',
     mode: 'development',
+    devtool: "source-map",
     entry: './server/index.js',
     output: {
         filename: 'bundle.js',
@@ -20,6 +21,7 @@ const server = {
 const client = {
     entry: './client/index.js',
     mode: 'development',
+    devtool: "source-map",
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, '../dist/client')

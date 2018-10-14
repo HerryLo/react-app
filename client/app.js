@@ -8,7 +8,7 @@ class App extends React.Component {
 
     render() {
         return(
-            <div onClick={()=> {alert(123)}}>
+            <div>
                 <Home />
             </div>
         )
