@@ -11,4 +11,9 @@ export function getStore() {
     return createStore(reducer, applyMiddleware(thunkMiddleware))
 }
 
+export function getClientStore() {
+    // let defaultState = window.context.state;
+    return createStore(reducer, applyMiddleware(thunkMiddleware))
+}
+
 export default getStore

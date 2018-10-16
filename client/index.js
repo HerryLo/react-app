@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider}  from 'react-redux';
-import getStore from './redux/index';
+import { getClientStore } from './redux/index';
 import Router from './router'
 
-const store = getStore();
+const store = getClientStore();
 const App = ()=> {
     return (
         <Provider store={store}>

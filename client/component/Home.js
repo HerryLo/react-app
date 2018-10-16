@@ -1,16 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addHome, homeList} from '../redux/action/home.action'
-import { throws } from 'assert';
 class Home extends React.Component {
     constructor(arg) {
         super(...arg);
         this.data = {
+            home: '345345'
         }
     }
 
     componentDidMount() {
-        this.props.getList();
+        console.log(12);
+        if(!this.props.newsList.length){
+            this.props.getList();
+        }
+        this.getHome();
+    }
+
+    getHome() {
+        this.setState({
+            home: 57567
+        })
     }
 
     render() {
@@ -25,6 +35,7 @@ class Home extends React.Component {
                 <div onClick={()=> { homeNumber(number) }}>
                     number: {number}
                 </div>
+                <div>{this.data.home}</div>
                 {
                     newsList.map(item=> {
                         return (
@@ -35,6 +46,10 @@ class Home extends React.Component {
             </div>
         ) 
     }
+}
+
+Home.loadData = (store, route ,match) => {
+    store.dispatch(homeList());
 }
 
 const mapStateToProps = (state, ownProps) => {
