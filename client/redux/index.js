@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware} from 'redux';
 import { homeNumber } from './reducer/home.reducer';
+import thunkMiddleware from 'redux-thunk'
 
 export const reducer = combineReducers({
-    homeNumber
+    home: homeNumber
 })
 
-export let store = createStore(reducer)
+export function getStore() {
+    return createStore(reducer, applyMiddleware(thunkMiddleware))
+}
 
-export default store
+export default getStore

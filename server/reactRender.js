@@ -5,11 +5,12 @@ import { Provider}  from 'react-redux';
 
 // 直接调用客户端方法
 import Router from '../client/router'
-import store from '../client/redux/index';
+import getStore from '../client/redux/index';
 
 export function reactRender(req, res) {
     try{
         const context = {};
+        const store = getStore()
         const element = <Provider store={store}>
             <StaticRouter location={req.path} context={context}>
                 {Router}
