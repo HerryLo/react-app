@@ -9,6 +9,17 @@
 - [react@16、react-dom@16](https://reactjs.org/docs/getting-started.html)、[react-router-dom@4](https://reacttraining.com/react-router/web/guides/server-rendering)
 - [ejs](https://www.npmjs.com/package/ejs) html template
 
+## Start
+```
+$ git clone https://github.com/HerryLo/react-app.git
+
+<!-- install -->
+$ npm install
+
+<!-- start local Server -->
+$ npm run dev
+```
+```npm start``` after, local visit![http://localhost:3000](http://localhost:3000)。
 
 ## Project structure
 ```
@@ -109,14 +120,4 @@ export function reactRender(req, res) {
 
 对于服务端渲染，希望可以慎重考虑，它会加大服务器的运行压力，相反客户端渲染在CDN加速的前提下，也会有不错的效果。
 
-## Start
-```
-$ git clone https://github.com/HerryLo/react-app.git
-
-<!-- install -->
-$ npm install
-
-<!-- start local Server -->
-$ npm run dev
-```
-```npm start``` after, local visit![http://localhost:3000](http://localhost:3000)。
+Reference : [react+react-router-dom ssr](https://alligator.io/react/react-router-ssr/)
