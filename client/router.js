@@ -1,28 +1,20 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
-import Home from './component/Home'
-import Login from './component/Login'
+import { renderRoutes } from 'react-router-config'
+import mianRouter from './router/index'
+import App from './App'
 
-export const routes = [
-    {
+export const routes = [{
         path: '/',
-        exact: true,
-        component: Home,
-        loadData: Home.loadData,
-        key: 'app'
-    },{
-        path: '/login',
-        exact: true,
-        component: Login,
-        key: 'login'
+        component: App,
+        routes: [
+            ...mianRouter
+        ]
     }
 ]
 
 const Router = (
     <div>
-        {routes.map(route => (
-            <Route {...route} />
-        ))}
+        {renderRoutes(routes)}
     </div>
 )
 

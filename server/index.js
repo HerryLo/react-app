@@ -7,6 +7,7 @@ const port = 3000;
 server.set('views', 'server');
 server.set('view engine', 'ejs');
 server.use(express.static('dist'));
+server.use(express.static('public'));
 
 server.get('*', (req ,res) => {
     reactRender(req, res);
