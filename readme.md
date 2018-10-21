@@ -9,6 +9,17 @@
 - [react@16、react-dom@16](https://reactjs.org/docs/getting-started.html)、[react-router-dom@4](https://reacttraining.com/react-router/web/guides/server-rendering)
 - [ejs](https://www.npmjs.com/package/ejs) html template
 
+## Start
+```
+$ git clone https://github.com/HerryLo/react-app.git
+
+<!-- install -->
+$ npm install
+
+<!-- start local Server -->
+$ npm run dev
+```
+```npm start``` after, local visit![http://localhost:3000](http://localhost:3000)。
 
 ## Project structure
 ```
@@ -67,14 +78,39 @@ import ReactDOMServer from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import Router from '../client/router'
 
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
+import { Provider}  from 'react-redux';
+import { matchRoutes } from 'react-router-config'
+
+// 直接调用客户端方法
+import Router, { routes } from '../client/router'
+import getStore from '../client/redux/index';
+
 export function reactRender(req, res) {
     try{
         const context = {};
-        const element = <StaticRouter location={req.path} context={context}>
-            {Router}
-        </StaticRouter>;
-        const content = ReactDOMServer.renderToString(element);
-        res.render('index', { content });
+        const promises = [];
+        const store = getStore();
+        const matchedRoute = matchRoutes(routes, req.path);
+
+        // 保证组件中 loadData的运行
+        matchedRoute.forEach((item, match) => {
+            if(item.route.loadData){
+                promises.push(item.route.loadData(store, item, match));
+            }
+        })
+
+        Promise.all(promises).then(()=> {
+            const element = <Provider store={store}>
+                <StaticRouter location={req.path} context={context}>
+                    { Router }
+                </StaticRouter>
+                </Provider>;
+            const content = ReactDOMServer.renderToString(element);
+            res.render('index', { content });
+        })
     }catch(e){
         console.log(e);
         res.status(404);
@@ -84,14 +120,4 @@ export function reactRender(req, res) {
 
 对于服务端渲染，希望可以慎重考虑，它会加大服务器的运行压力，相反客户端渲染在CDN加速的前提下，也会有不错的效果。
 
-## Start
-```
-$ git clone https://github.com/HerryLo/react-app.git
-
-<!-- install -->
-$ npm install
-
-<!-- start local Server -->
-$ npm run dev
-```
-```npm start``` after, local visit![http://localhost:3000](http://localhost:3000)。
+Reference : [react+react-router-dom ssr](https://alligator.io/react/react-router-ssr/)
