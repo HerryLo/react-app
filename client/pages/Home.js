@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addHome, homeList} from '../redux/action/home.action'
+import styles from '../styles/common.css'
+
 class Home extends React.Component {
     constructor(arg) {
         super(...arg);
@@ -9,8 +11,13 @@ class Home extends React.Component {
         }
     }
 
+    componentWillMount() {
+        if(this.props.staticContext){
+            this.props.staticContext.css.push(styles._getCss());
+        }
+    }
+
     componentDidMount() {
-        console.log(12);
         if(!this.props.newsList.length){
             this.props.getList();
         }

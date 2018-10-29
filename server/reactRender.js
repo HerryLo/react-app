@@ -29,7 +29,12 @@ export function reactRender(req, res) {
                 </StaticRouter>
                 </Provider>;
             const content = ReactDOMServer.renderToString(element);
-            res.render('index', { content });
+            const cssStatic = context.css.lenght?context.css.join('\n'):''
+            res.render('index', {
+                content, 
+                cssStatic, 
+                state: JSON.stringify(store.getState())
+            });
         })
     }catch(e){
         console.log(e);

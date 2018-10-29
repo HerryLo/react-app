@@ -13,18 +13,48 @@ const jsLoader = {
     }
 }
 
+const clientCssLoader = {
+    test: /\.css$/,
+    exclude: /node_modules/,
+    use: [ 'style-loader', {
+            loader: 'css-loader',
+            options: {
+                importLoader: 1,
+                module: true,
+                localIdentName: '[name]__[local]--[hash:base64:5]'
+            }
+        }
+    ]
+}
+
+const serverCssLoader = {
+    test: /\.css$/,
+    exclude: /node_modules/,
+    use: [ 'isomorphic-style-loader', {
+            loader: 'css-loader',
+            options: {
+                importLoader: 1,
+                module: true,
+                localIdentName: '[name]__[local]--[hash:base64:5]'
+            }
+        }
+    ]
+}
+
 module.exports = {
     server: {
         module: {
             rules: [
-                jsLoader
+                jsLoader,
+                serverCssLoader
             ]
         }
     },
     client: {
         module: {
             rules: [
-                jsLoader
+                jsLoader,
+                clientCssLoader
             ]
         }
     }
