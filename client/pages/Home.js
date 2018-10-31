@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addHome, homeList} from '../redux/action/home.action'
-import styles from '../styles/common.css'
-
+import styles from '../styles/Home/Home.css'
 class Home extends React.Component {
     constructor(arg) {
         super(...arg);
@@ -38,8 +37,8 @@ class Home extends React.Component {
         }  = this.props;
         return(
             <div>
-                <div>React ServerRender</div>
-                <div onClick={()=> { homeNumber(number) }}>
+                <div className={styles.test}>React ServerRender</div>
+                <div onClick={()=> { debugger;homeNumber(number) }}>
                     number: {number}
                 </div>
                 <div>{this.data.home}</div>

@@ -20,8 +20,8 @@ const clientCssLoader = {
             loader: 'css-loader',
             options: {
                 importLoader: 1,
-                module: true,
-                localIdentName: '[name]__[local]--[hash:base64:5]'
+                modules: true,
+                localIdentName: '[name]_[local]_[hash:base64:5]'
             }
         }
     ]
@@ -34,8 +34,8 @@ const serverCssLoader = {
             loader: 'css-loader',
             options: {
                 importLoader: 1,
-                module: true,
-                localIdentName: '[name]__[local]--[hash:base64:5]'
+                modules: true,
+                localIdentName: '[name]_[local]_[hash:base64:5]'
             }
         }
     ]

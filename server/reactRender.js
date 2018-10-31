@@ -10,7 +10,9 @@ import getStore from '../client/redux/index';
 
 export function reactRender(req, res) {
     try{
-        const context = {};
+        const context = {
+            css: []
+        };
         const promises = [];
         const store = getStore();
         const matchedRoute = matchRoutes(routes, req.path);
@@ -29,7 +31,7 @@ export function reactRender(req, res) {
                 </StaticRouter>
                 </Provider>;
             const content = ReactDOMServer.renderToString(element);
-            const cssStatic = context.css.lenght?context.css.join('\n'):''
+            const cssStatic = context.css.length?context.css.join('\n'):''
             res.render('index', {
                 content, 
                 cssStatic, 
