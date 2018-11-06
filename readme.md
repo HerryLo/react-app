@@ -24,11 +24,11 @@ $ npm run dev
 ## Project structure
 ```
 .
-|——server 服务端
+|——server
 |  |—— index.ejs                  ejs template
 |  |—— index.js                   server
 |  |—— reactRender.js             react server render
-|——client 客户端
+|——client
 |  |—— component                  public component
 |  |—— pages                      page
 |  |—— router                     router config
@@ -36,16 +36,16 @@ $ npm run dev
 |  |—— app.js                     
 |  |—— index.js                   client react
 |  |—— router.js                  main router
-|——config 配置
+|——config
 |  |—— webapck.base.js            base webpack
 |  |—— webapck.dev.js             dev webpack
 ``` 
 
 ## server render 
 
-下面将node服务端代码展示出来，希望可以帮到大家！
+node server code Examples:
 
-node静态服务
+node static server
 
 /server/index.js
 ```javascript
@@ -69,7 +69,7 @@ server.listen(port, () => {
 })
 ```
 
-react服务端渲染文件
+react server render file
 
 /server/reactRender.js
 ```javascript
@@ -84,7 +84,7 @@ import { StaticRouter } from 'react-router-dom';
 import { Provider}  from 'react-redux';
 import { matchRoutes } from 'react-router-config'
 
-// 直接调用客户端方法
+// client method
 import Router, { routes } from '../client/router'
 import getStore from '../client/redux/index';
 
@@ -117,7 +117,6 @@ export function reactRender(req, res) {
     }
 }
 ```
-
-对于服务端渲染，希望可以慎重考虑，它会加大服务器的运行压力，相反客户端渲染在CDN加速的前提下，也会有不错的效果。
+For server rendering, I hope it can be carefully considered, it will increase the pressure of the server operation, on the contrary, client rendering in the premise of CDN acceleration, will have a good effect.
 
 Reference : [react+react-router-dom ssr](https://alligator.io/react/react-router-ssr/)
