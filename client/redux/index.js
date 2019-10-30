@@ -7,6 +7,8 @@ export const reducer = combineReducers({
     home: homeNumber
 })
 
+console.log(reducer)
+
 export function getStore() {
     return createStore(reducer, applyMiddleware(thunkMiddleware))
 }
